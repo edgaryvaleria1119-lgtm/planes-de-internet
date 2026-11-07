@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planes de Internet</title>
+    <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+<script>
+
+let Cliente = prompt("Digite el nombre del cliente")
+let Codigo, Cantidad
+let Plan, Mbps, Mensualidad
+let Bruto, Rebaja, Ahorro, Pago
+
+Codigo = parseInt(prompt("Elija el plan:\n1 - Basico (10 Mbps)\n2 - Estandar (50 Mbps)\n3 - Premium (100 Mbps)"))
+
+Cantidad = parseInt(prompt("Digite los meses a contratar"))
+
+switch (Codigo) {
+    case 1:
+        Plan = "Basico"
+        Mbps = "10 Mbps"
+        Mensualidad = 40000
+        break
+    case 2:
+        Plan = "Estandar"
+        Mbps = "50 Mbps"
+        Mensualidad = 70000
+        break
+    case 3:
+        Plan = "Premium"
+        Mbps = "100 Mbps"
+        Mensualidad = 100000
+        break
+    default:
+        Plan = "No valido"
+        Mbps = "-"
+        Mensualidad = 0
+}
+
+Bruto = Mensualidad * Cantidad
+
+Rebaja = 0
+
+if (Cantidad >= 6) {
+    Rebaja = 10
+}
+if (Cantidad >= 12) {
+    Rebaja = 20
+}
+
+Ahorro = Bruto * Rebaja / 100
+Pago = Bruto - Ahorro
+
+document.write ("<h1>Calculadora de Internet</h1>")
+document.write ("<p>Cliente : " + Cliente + "</p>")
+document.write ("<p>Plan contratado : " + Plan + " (" + Mbps + ")</p>")
+document.write ("<p>Valor mensual : $" + Mensualidad + "</p>")
+document.write ("<p>Meses contratados : " + Cantidad + "</p>")
+
+if (Rebaja > 0) {
+    document.write ("<p class='descuento'>Descuento aplicado : " + Rebaja + "% ($" + Ahorro + ")</p>")
+} else {
+    document.write ("<p>Descuento aplicado : Ninguno</p>")
+}
+
+document.write ("<h2>Total a pagar : $" + Pago + "</h2>")
+
+</script>
+
+</body>
+</html>
